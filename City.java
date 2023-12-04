@@ -28,19 +28,19 @@ public class City implements CityInterface, Comparable<City> {
     }
 
     public void setID(int ID) {
-
+        this.id = id;
     }
 
     public void setName(String name) {
-
+        this.name = name;
     }
 
     public void setPopulation(int population) {
-
+        this.population = population;
     }
 
     public void setInfluenzaCases(int InfluenzaCases) {
-
+        this.influenzaCases = influenzaCases;
     }
 
     @Override
