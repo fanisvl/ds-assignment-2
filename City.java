@@ -5,20 +5,26 @@ public class City implements CityInterface, Comparable<City> {
     private int population;
     private int influenzaCases;
 
+    public City(int id, String name, int population, int influenzaCases) {
+        this.id = id;
+        this.name = name;
+        this.population = population;
+        this.influenzaCases = influenzaCases;
+    }
     public int getID() {
-        return 0;
+        return id;
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public int getPopulation() {
-        return 0;
+        return population;
     }
 
     public int getInfluenzaCases() {
-        return 0;
+        return influenzaCases;
     }
 
     public void setID(int ID) {
