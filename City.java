@@ -1,5 +1,8 @@
-public class City implements CityInterface, Comparable<City> {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
+public class City implements CityInterface, Comparable<City> {
+    
     private int id;
     private String name;
     private int population;
@@ -43,8 +46,24 @@ public class City implements CityInterface, Comparable<City> {
         this.influenzaCases = influenzaCases;
     }
 
+    public double calculateDensity() {
+        // Calculate cases per 50.000 residents
+        double density = (double) influenzaCases / (population / 50000.0);
+        BigDecimal bd = BigDecimal.valueOf(density);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
     @Override
     public int compareTo(City o) {
-        return 0;
+        int densityComparison = Double.compare(o.calculateDensity(), this.calculateDensity());
+        if (densityComparison == 0) {
+            int nameComparison = o.getName().compareTo(this.getName());
+            if (nameComparison == 0) {
+                return Integer.compare(o.getID(), this.getID());
+            }
+            return nameComparison;
+        }
+        return densityComparison;
     }
 }
