@@ -12,7 +12,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
     public void heapSort() {
         buildHeap();
-        // Remove max and place it at the back of the array.
+        // Remove max from heap and place it at the back of the array.
         while (N > 1) {
             exchange(0, --N);
             sink(0);
