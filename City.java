@@ -52,6 +52,8 @@ public class City implements CityInterface, Comparable<City> {
     }
 
     public void setPopulation(int population) {
+        if (population < 0) throw new IllegalArgumentException("Population must be a positive number.");
+        if (population > 10000000) throw new IllegalArgumentException("Population must be below 10.000.000");
         this.population = population;
     }
 
