@@ -31,7 +31,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void sink(int k) {
-        while (2 * k + 1 < N) {
+        while (2*k + 1 < N) {
             int j = 2 * k + 1;
             if (j + 1 < N && less(j, j + 1)) j++;
             if (!less(k, j)) break;
@@ -49,6 +49,4 @@ public class MaxPQ<Key extends Comparable<Key>> {
         pq[i] = pq[j];
         pq[j] = temp;
     }
-
-
 }
