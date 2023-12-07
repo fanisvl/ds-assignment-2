@@ -56,11 +56,11 @@ public class City implements CityInterface, Comparable<City> {
 
     @Override
     public int compareTo(City o) {
-        int densityComparison = Double.compare(o.calculateDensity(), this.calculateDensity());
+        int densityComparison = Double.compare(this.calculateDensity(), o.calculateDensity());
         if (densityComparison == 0) {
-            int nameComparison = o.getName().compareTo(this.getName());
+            int nameComparison = this.getName().compareTo(o.getName());
             if (nameComparison == 0) {
-                return Integer.compare(o.getID(), this.getID());
+                return Integer.compare(this.getID(), o.getID());
             }
             return nameComparison;
         }
