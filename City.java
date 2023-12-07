@@ -4,15 +4,17 @@ import java.math.RoundingMode;
 public class City implements CityInterface, Comparable<City> {
     
     private int id;
+    private static int[] usedIds = new int[1000];
+    private static int usedIdsIndex = 0;
     private String name;
     private int population;
     private int influenzaCases;
 
     public City(int id, String name, int population, int influenzaCases) {
-        this.id = id;
-        this.name = name;
-        this.population = population;
-        this.influenzaCases = influenzaCases;
+        setID(id);
+        setName(name);
+        setPopulation(population);
+        setInfluenzaCases(influenzaCases);
     }
     public int getID() {
         return id;
@@ -30,8 +32,18 @@ public class City implements CityInterface, Comparable<City> {
         return influenzaCases;
     }
 
-    public void setID(int ID) {
+    public void setID(int id) {
+        if (idExists(id)) throw new IllegalArgumentException("id " + id + " already exists");
+        if (id < 1 || id > 999) throw new IllegalArgumentException("id must be between 1 and 999 inclusive.");
+        usedIds[usedIdsIndex++] = id;
         this.id = id;
+    }
+
+    public static boolean idExists(int id) {
+        for (int usedId : usedIds) {
+            if (usedId == id)  return true;
+        }
+        return false;
     }
 
     public void setName(String name) {
