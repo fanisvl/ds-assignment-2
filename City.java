@@ -57,8 +57,9 @@ public class City implements CityInterface, Comparable<City> {
         this.population = population;
     }
 
-    public void setInfluenzaCases(int InfluenzaCases) {
-        this.influenzaCases = influenzaCases;
+    public void setInfluenzaCases(int cases) {
+        if (cases > population) throw new IllegalArgumentException("Influenza cases cannot be more than population.");
+        this.influenzaCases = cases;
     }
 
     public double calculateDensity() {
