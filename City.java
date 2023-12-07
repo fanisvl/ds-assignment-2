@@ -66,4 +66,8 @@ public class City implements CityInterface, Comparable<City> {
         }
         return densityComparison;
     }
+
+    public String toString() {
+        return this.getName();
+    }
 }
