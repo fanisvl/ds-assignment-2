@@ -30,9 +30,10 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
     public Key delMax() {
         Key max = pq[1];
-        exchange(1, N--);
+        exchange(1, N);
         sink(1);
-        pq[N+1] = null;
+        pq[N] = null;
+        N--;
         return max;
     }
 
