@@ -13,7 +13,7 @@ public class Influenza_k {
 
         // Get file name
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter daily report filename: ");
+        System.out.print("Please enter report filename: ");
         String filePath = scanner.nextLine();
 
         // Read file
