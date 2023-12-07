@@ -1,9 +1,12 @@
 public class MaxPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int N;
+    private static final int DEFAULT_CAPACITY = 4;
+    private static final int AUTOGROW_SIZE = 4;
 
-    public MaxPQ(int capacity) {
-        pq = (Key[]) new Comparable[capacity];
+    public MaxPQ() {
+        this.pq = (Key[]) new Comparable[DEFAULT_CAPACITY];
+        this.N = 0;
     }
     private void buildHeap() {
         for (int k = N / 2 - 1; k >= 0; k--) {
@@ -23,9 +26,18 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     public void insert(Key key) {
+        // Check available space
+        if (N == pq.length - 1) grow();
         pq[N] = key;
         swim(N);
         N++;
+    }
+
+    private void grow() {
+        Key[] newPQ = (Key[]) new Comparable[pq.length + AUTOGROW_SIZE];
+        // copy array
+        for (int i = 0; i < N; i++) {newPQ[i] = pq[i];}
+        pq = newPQ;
     }
 
     public Key delMax() {
