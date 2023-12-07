@@ -32,9 +32,23 @@ public class Influenza_k {
                 // Create and save city
                 City city = new City(id, name, population, influenzaCases);
                 cities.insert(city);
+
             }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("File not found: " + filePath);
+            System.exit(1);
         }
+
+        // Check if k is valid
+        System.out.print("k (max " + cities.getSize() + ") = ");
+        int k = Integer.parseInt(scanner.nextLine());
+        if (k > cities.getSize()) throw new IllegalArgumentException("Maximum valid k value is " + cities.getSize());
+
+        cities.heapSort();
+        System.out.println("The top k cities are: ");
+        for (int i = 0; i < k; i++) {
+            System.out.println(cities.get(i));
+        }
+
     }
 }
