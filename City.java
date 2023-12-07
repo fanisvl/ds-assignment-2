@@ -47,6 +47,7 @@ public class City implements CityInterface, Comparable<City> {
     }
 
     public void setName(String name) {
+        if (name.length() > 50) throw new IllegalArgumentException("Name be less than 50 characters");
         this.name = name;
     }
 
