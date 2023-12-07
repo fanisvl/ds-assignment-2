@@ -35,7 +35,7 @@ public class Influenza_k {
 
             }
         } catch (Exception e) {
-            System.out.println("File not found: " + filePath);
+            System.out.println("Error: " + e);
             System.exit(1);
         }
 
