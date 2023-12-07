@@ -5,14 +5,27 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public MaxPQ(int capacity) {
         pq = (Key[]) new Comparable[capacity];
     }
-
+    private void buildHeap() {
+        for (int k = N / 2 - 1; k >= 0; k--) {
+            sink(k);
+        }
+    }
+    public void heapSort() {
+        buildHeap();
+        // Remove max and place it at the back of the array.
+        while (N > 1) {
+            exchange(0, --N);
+            sink(0);
+        }
+    }
     public boolean isEmpty() {
         return N == 0;
     }
 
     public void insert(Key key) {
-        pq[++N] = key;
+        pq[N] = key;
         swim(N);
+        N++;
     }
 
     public Key delMax() {
