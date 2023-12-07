@@ -8,19 +8,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
         this.pq = (Key[]) new Comparable[DEFAULT_CAPACITY];
         this.N = 0;
     }
-    private void buildHeap() {
-        for (int k = N / 2 - 1; k >= 0; k--) {
-            sink(k);
-        }
-    }
-    public void heapSort() {
-        buildHeap();
-        // Remove max from heap and place it at the back of the array.
-        while (N > 1) {
-            exchange(0, --N);
-            sink(0);
-        }
-    }
+
     public boolean isEmpty() {
         return N == 0;
     }
@@ -66,6 +54,22 @@ public class MaxPQ<Key extends Comparable<Key>> {
         }
     }
 
+    // Heapsort
+    private void buildHeap() {
+        for (int k = N / 2 - 1; k >= 0; k--) {
+            sink(k);
+        }
+    }
+    public void heapSort() {
+        buildHeap();
+        // Remove max from heap and place it at the back of the array.
+        while (N > 1) {
+            exchange(0, --N);
+            sink(0);
+        }
+    }
+
+    // Helper functions
     private boolean less(int i, int j) {
         return pq[i].compareTo(pq[j]) < 0;
     }
