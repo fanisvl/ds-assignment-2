@@ -1,21 +1,23 @@
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class Influenza_k {
     public static void main(String[] args) {
 
-        // Get file name
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter daily report filename: ");
-        String filename = scanner.nextLine();
-
         // Create arrayList to store cities
         MaxPQ<City> cities = new MaxPQ<>();
 
+        // Get file name
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter daily report filename: ");
+        String filePath = scanner.nextLine();
 
         // Read file
-        try (Scanner fileReader = new Scanner(Paths.get(filename))) {
+        try (Scanner fileReader = new Scanner(Paths.get(filePath))) {
             while (fileReader.hasNextLine()) {
                 // Split line to city info.
                 String line = fileReader.nextLine();
