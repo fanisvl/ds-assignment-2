@@ -44,6 +44,7 @@ public class Influenza_k {
         int k = Integer.parseInt(scanner.nextLine());
         if (k > cities.getSize()) throw new IllegalArgumentException("Maximum valid k value is " + cities.getSize());
 
+        // Get result
         cities.heapSort();
         System.out.println("The top k cities are: ");
         for (int i = 0; i < k; i++) {
