@@ -11,7 +11,8 @@ public class Influenza_k {
         String filename = scanner.nextLine();
 
         // Create arrayList to store cities
-        ArrayList<City> cities = new ArrayList<>();
+        MaxPQ<City> cities = new MaxPQ<>();
+
 
         // Read file
         try (Scanner fileReader = new Scanner(Paths.get(filename))) {
@@ -28,7 +29,7 @@ public class Influenza_k {
 
                 // Create and save city
                 City city = new City(id, name, population, influenzaCases);
-                cities.add(city);
+                cities.insert(city);
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
