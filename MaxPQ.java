@@ -12,6 +12,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public boolean isEmpty() {
         return N == 0;
     }
+    public int getSize() {return N;}
 
     public void insert(Key key) {
         // Check available space
@@ -35,6 +36,10 @@ public class MaxPQ<Key extends Comparable<Key>> {
         pq[N] = null;
         N--;
         return max;
+    }
+
+    public Key get(int i) {
+        return pq[i];
     }
 
     private void swim(int k) {
