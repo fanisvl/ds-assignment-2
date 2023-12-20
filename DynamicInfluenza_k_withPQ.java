@@ -1,15 +1,15 @@
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class Influenza_k {
+public class DynamicInfluenza_k_withPQ {
     public static void main(String[] args) {
-        System.out.println("Influenza_k");
+        System.out.println("DynamicInfluenza_k_withPQ");
         
         // Create arrayList to store cities
-        MaxPQ<City> cities = new MaxPQ<>();
+        PQ<City> cities = new PQ<>();
 
         if (args.length != 2) {
-            System.out.println("Χρήση: java Influenza_k <k> <input_file>");
+            System.out.println("Χρήση: java DynamicInfluenza_k_withPQ <k> <input_file>");
             System.exit(1);
         }
 
@@ -31,23 +31,31 @@ public class Influenza_k {
 
                 // Create and save city
                 City city = new City(id, name, population, influenzaCases);
-                cities.insert(city);
-
+                
+                
+                
+                if (cities.size() < k) { cities.insert(city); } 
+                
+                else {
+                    City MaxCity = cities.getMax();
+                    
+                    if (MaxCity.compareTo(city)>0){
+                       
+                        cities.remove(MaxCity);
+                       
+                        cities.insert(city);
+                    }
+                } 
             }
         } catch (Exception e) {
             System.out.println("Error: " + e);
             System.exit(1);
         }
-
-        // Check if k is valid
-        if (k > cities.getSize()) throw new IllegalArgumentException("Maximum valid k value is " + cities.getSize());
-
-        // Get result
-        cities.heapSort();
+        
         System.out.println("The top k cities are: ");
-        for (int i = 0; i < k; i++) {
-            System.out.println(cities.get(i));
+        while(!cities.isEmpty()){
+            System.out.println(cities.getmin());
         }
-
+       
     }
 }

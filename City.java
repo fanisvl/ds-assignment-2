@@ -16,6 +16,7 @@ public class City implements CityInterface, Comparable<City> {
         setPopulation(population);
         setInfluenzaCases(influenzaCases);
     }
+    
     public int getID() {
         return id;
     }
