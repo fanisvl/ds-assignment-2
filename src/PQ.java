@@ -6,10 +6,10 @@ public class PQ<T extends Comparable<T>> {
     private static final int DEFAULT_CAPACITY = 10;
     private static final double DEFAULT_RESIZE = 0.75;
 
-    // Array to store the minimum heap elements
+    // Array to store the heap elements
     private T[] minHeap;
 
-    // Index array for real elements
+    // Map elements to their indexes
     private int[] indexes;
 
     // Current size of the priority queue
@@ -212,7 +212,6 @@ public class PQ<T extends Comparable<T>> {
         return minHeap[0];
     }
 
-    // η υλοποιηση τησ μεθοδου ειναι Ν δεν βρηκα πιο απλο και συντομο τροπο!!!!!
     public T getMax() {
         if (isEmpty()) {
             throw new IllegalStateException("Min Heap is empty");
@@ -226,5 +225,4 @@ public class PQ<T extends Comparable<T>> {
         }
         return maxItem;
     }
-    
 }
