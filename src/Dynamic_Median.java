@@ -68,6 +68,11 @@ public class Dynamic_Median {
                 while (!denTwoPQ.isEmpty()) {
                     denPQ.insert(denTwoPQ.getmin());
                 }
+
+                 // Print the calculated density of the final median city
+                if (denPQ.size() % 5 == 0) {
+                    System.out.println(median.calculateDensity());
+                }
             }
         } catch (Exception e) {
             // Handle any exceptions that may occur during file reading
@@ -75,7 +80,5 @@ public class Dynamic_Median {
             System.exit(1);
         }
 
-        // Print the calculated density of the final median city
-        System.out.println(median.calculateDensity());
     }
 }

@@ -212,7 +212,6 @@ public class PQ<T extends Comparable<T>> {
         return minHeap[0];
     }
 
-    // η υλοποιηση τησ μεθοδου ειναι Ν δεν βρηκα πιο απλο και συντομο τροπο!!!!!
     public T getMax() {
         if (isEmpty()) {
             throw new IllegalStateException("Min Heap is empty");
@@ -226,5 +225,4 @@ public class PQ<T extends Comparable<T>> {
         }
         return maxItem;
     }
-    
 }
